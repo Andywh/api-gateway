@@ -14,6 +14,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 
 @Component
 public class addResponseHeaderFilter extends ZuulFilter {
+
     @Override
     public String filterType() {
         return POST_TYPE;
@@ -31,6 +32,7 @@ public class addResponseHeaderFilter extends ZuulFilter {
 
     @Override
     public Object run() {
+        System.out.println("add Response Header");
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletResponse response = requestContext.getResponse();
         response.setHeader("X-Foo", UUID.randomUUID().toString());
